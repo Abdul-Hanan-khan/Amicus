@@ -1,0 +1,206 @@
+{
+  "data":[
+    {
+      "reference_id": "REF-1001",
+      "make": "Chevrolet",
+      "model": "Equinox",
+      "color": "White",
+      "license_plate": "MG-7501J",
+      "location": "Street #2",
+      "timestamp": "Wed, 30-10-24 21:23:18 GMT",
+      "images": {
+        "front": "assets/images/front.png",
+        "back": "assets/images/back.png",
+        "side": "assets/images/side.png",
+        "context": "assets/images/context.png"
+      },
+      "sent_to": "ccclerk@vancouver.ca",
+      "enforcement_office": "Vancouver",
+      "contact_number": "3-1-1 (within Vancouver), 604-873-7000 (outside)",
+      "additional_information": "ccclerk@vancouver.ca",
+      "location_id": "123456ABC"
+    },
+    {
+      "reference_id": "REF-1002",
+      "make": "Ford",
+      "model": "Escape",
+      "color": "Black",
+      "license_plate": "XZ-9876Y",
+      "location": "Main Street #5",
+      "timestamp": "Thu, 31-10-24 10:15:45 GMT",
+      "images": {
+        "front": "assets/images/front.png",
+        "back": "assets/images/back.png",
+        "side": "assets/images/side.png",
+        "context": "assets/images/context.png"
+      },
+      "sent_to": "traffic@citygov.com",
+      "enforcement_office": "Toronto",
+      "contact_number": "416-555-1234",
+      "additional_information": "Please check unauthorized parking.",
+      "location_id": "789654XYZ"
+    },
+    {
+      "reference_id": "REF-1003",
+      "make": "Toyota",
+      "model": "Corolla",
+      "color": "Red",
+      "license_plate": "TY-1234K",
+      "location": "Park Avenue",
+      "timestamp": "Fri, 01-11-24 14:07:59 GMT",
+      "images": {
+        "front": "assets/images/front.png",
+        "back": "assets/images/back.png",
+        "side": "assets/images/side.png",
+        "context": "assets/images/context.png"
+      },
+      "sent_to": "report@trafficdept.org",
+      "enforcement_office": "Montreal",
+      "contact_number": "514-222-5678",
+      "additional_information": "Illegal parking on sidewalk.",
+      "location_id": "987321MNO"
+    },
+    {
+      "reference_id": "REF-1004",
+      "make": "Honda",
+      "model": "Civic",
+      "color": "Blue",
+      "license_plate": "HN-5678Q",
+      "location": "Downtown Square",
+      "timestamp": "Sat, 02-11-24 18:30:00 GMT",
+      "images": {
+        "front": "assets/images/front.png",
+        "back": "assets/images/back.png",
+        "side": "assets/images/side.png",
+        "context": "assets/images/context.png"
+      },
+      "sent_to": "officer@citysecurity.com",
+      "enforcement_office": "Calgary",
+      "contact_number": "403-123-8900",
+      "additional_information": "Vehicle blocking emergency exit.",
+      "location_id": "654789PQR"
+    },
+    {
+      "reference_id": "REF-1005",
+      "make": "Tesla",
+      "model": "Model 3",
+      "color": "Silver",
+      "license_plate": "TS-9021L",
+      "location": "Tech Park",
+      "timestamp": "Sun, 03-11-24 11:45:22 GMT",
+      "images": {
+        "front": "assets/images/front.png",
+        "back": "assets/images/back.png",
+        "side": "assets/images/side.png",
+        "context": "assets/images/context.png"
+      },
+      "sent_to": "support@electriccars.com",
+      "enforcement_office": "Edmonton",
+      "contact_number": "780-654-3210",
+      "additional_information": "Vehicle parked in restricted area.",
+      "location_id": "321654STU"
+    },
+    {
+      "reference_id": "REF-1006",
+      "make": "BMW",
+      "model": "X5",
+      "color": "Gray",
+      "license_plate": "BM-4567X",
+      "location": "City Mall",
+      "timestamp": "Mon, 04-11-24 20:10:30 GMT",
+      "images": {
+        "front": "assets/images/front.png",
+        "back": "assets/images/back.png",
+        "side": "assets/images/side.png",
+        "context": "assets/images/context.png"
+      },
+      "sent_to": "security@mallmanagement.com",
+      "enforcement_office": "Winnipeg",
+      "contact_number": "204-987-6543",
+      "additional_information": "Luxury car abandoned for days.",
+      "location_id": "159357VWX"
+    },
+    {
+      "reference_id": "REF-1007",
+      "make": "Mercedes",
+      "model": "C-Class",
+      "color": "White",
+      "license_plate": "MC-1112B",
+      "location": "Airport Terminal",
+      "timestamp": "Tue, 05-11-24 09:55:40 GMT",
+      "images": {
+        "front": "assets/images/front.png",
+        "back": "assets/images/back.png",
+        "side": "assets/images/side.png",
+        "context": "assets/images/context.png"
+      },
+      "sent_to": "info@airportsecurity.com",
+      "enforcement_office": "Halifax",
+      "contact_number": "902-333-9999",
+      "additional_information": "Unauthorized vehicle near runway.",
+      "location_id": "258147YZA"
+    },
+    {
+      "reference_id": "REF-1008",
+      "make": "Nissan",
+      "model": "Altima",
+      "color": "Green",
+      "license_plate": "NS-7777T",
+      "location": "Seaside Boulevard",
+      "timestamp": "Wed, 06-11-24 16:20:55 GMT",
+      "images": {
+        "front": "assets/images/front.png",
+        "back": "assets/images/back.png",
+        "side": "assets/images/side.png",
+        "context": "assets/images/context.png"
+      },
+      "sent_to": "admin@trafficcontrol.ca",
+      "enforcement_office": "Quebec City",
+      "contact_number": "418-222-5555",
+      "additional_information": "Vehicle parked in fire lane.",
+      "location_id": "369852BCD"
+    },
+    {
+      "reference_id": "REF-1009",
+      "make": "Hyundai",
+      "model": "Elantra",
+      "color": "Blue",
+      "license_plate": "HY-5555K",
+      "location": "Metro Station #1",
+      "timestamp": "Thu, 07-11-24 13:12:10 GMT",
+      "images": {
+        "front": "assets/images/front.png",
+        "back": "assets/images/back.png",
+        "side": "assets/images/side.png",
+        "context": "assets/images/context.png"
+      },
+      "sent_to": "metro@citytransport.org",
+      "enforcement_office": "Ottawa",
+      "contact_number": "613-999-4444",
+      "additional_information": "Blocking bus lane.",
+      "location_id": "753951FGH"
+    },
+    {
+      "reference_id": "REF-1010",
+      "make": "Mazda",
+      "model": "CX-5",
+      "color": "Black",
+      "license_plate": "MZ-3333Y",
+      "location": "Shopping Plaza",
+      "timestamp": "Fri, 08-11-24 22:00:00 GMT",
+      "images": {
+        "front": "assets/images/front.png",
+        "back": "assets/images/back.png",
+        "side": "assets/images/side.png",
+        "context": "assets/images/context.png"
+      },
+      "sent_to": "parking@plazasecurity.com",
+      "enforcement_office": "Saskatoon",
+      "contact_number": "306-777-8888",
+      "additional_information": "Illegally parked in disabled spot.",
+      "location_id": "852963JKL"
+    }
+  ]
+
+
+}
