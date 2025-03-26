@@ -34,6 +34,7 @@ class ForgotPassword extends StatelessWidget {
       top: true,
       backgroundColor: myColors.black,
       statusBarIconBrightness: Brightness.light,
+      statusBarColor: myColors.black,
 
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -132,6 +133,8 @@ class ForgotPassword extends StatelessWidget {
               bgcolor: Colors.transparent,
               controller: controller.phoneNumberCtr,
               keyboardType: TextInputType.phone,
+              style: TextStyle(color: myColors.black,fontFamily: AppFonts.almarai),
+              labelStyle: TextStyle(color: Colors.grey,fontFamily: AppFonts.almarai),
               border: true,
               onChange: (v) {
                 controller.validatePhone();
@@ -139,7 +142,7 @@ class ForgotPassword extends StatelessWidget {
               // borderColor:myColors.primaryColor,
               radius: 10.r,
               prefixIcon:
-              ImageViewer(url: AppAssets.iconPhone).paddingAll(12.sp))
+              ImageViewer(url: AppAssets.iconPhone).paddingAll(16.sp))
               .marginOnly(top: 28.h),
 
           Obx(

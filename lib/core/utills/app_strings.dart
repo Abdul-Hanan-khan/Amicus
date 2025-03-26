@@ -16,9 +16,9 @@ class AppStrings {
   static const allowAmicusToAccessPhotos =
       "Allow Amicus to access photos, media and files on your device?";
   static const continueText = "Continue";
-  static const firstTimeHere = "First Time Here?";
+  static const firstTimeHere = "First time here?";
   static const signUP = "Sign Up";
-  static const letsSignYouIn = "Let's Sign You In";
+  static const letsSignYouIn = "Let's Sign you in";
   static const welcomeBackYouWereMissed = "Welcome back, you’ve been missed";
   static const email = "Email";
   static const emailAddress = "Email Address";
@@ -118,7 +118,7 @@ class AppStrings {
   static const timeStamp = "Timestamp";
   static const description = "Description";
   static const explainHere = "Explain Here ......";
-  static const yourBountySubmitted = "Your bounty has been submitted successfully";
+  static const yourBountySubmitted = "Your bounty has been submitted successfully.";
   static const submissionSentTo = "Submission sent to";
   static const sentTo = "Sent to";
   static const municipality = "Municipality";
@@ -129,7 +129,7 @@ class AppStrings {
   static const warning = "Warning";
   static const dontShowThat = "Don't show that again.";
   static const weRecommendToAddMinimum3Photos = "We recommend to add minimum 3 photos, non vehicle, related photos. Front, back, side and context photo.";
-  static const byLaw = "By Law:";
+  static const byLaw = "Bylaw:";
   static const enforcementOffice = "By Law:";
   static const enterOldPassword = "Enter Old Password";
   static const submissionsRequired = "2 submissions required to reach level 2";

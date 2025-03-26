@@ -31,8 +31,12 @@ class OtpScreen extends StatelessWidget {
     print("widget build otp");
     return BaseScaffold(
       top: true,
+      // bottom: true,
+// isAuthentication: true,
       backgroundColor: myColors.black,
       statusBarIconBrightness: Brightness.light,
+      statusBarColor: myColors.black,
+
 
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -95,7 +99,7 @@ class OtpScreen extends StatelessWidget {
       Positioned(
           left: 20.w,
           top: 10.h,
-          child: BackWidget())
+          child: BackWidget(buttonColor: myColors.white,))
       ],
     );
   }

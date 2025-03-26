@@ -39,7 +39,7 @@ class SummaryStep extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Center(
+                  Expanded(
                     child: CustomText(
                       text: AppStrings.yourBountySubmitted,
                       fontColor: myColors.green,
@@ -49,7 +49,7 @@ class SummaryStep extends StatelessWidget {
                   ),
                   ImageViewer(url: AppAssets.iconCheck)
                 ],
-              ),
+              ).paddingSymmetric(horizontal: 7.wr(context)),
             ),
             pageTextField(
                     controller: controller.submittedToCtr,
@@ -60,7 +60,7 @@ class SummaryStep extends StatelessWidget {
             pageTextField(
                     controller: controller.municipalityCtr,
                     hintText: "Vancouver",
-                    label: AppStrings.municipality)
+                    label: AppStrings.enforcementOffice)
                 .marginOnly(top: 12.h),
 
             pageTextField(
@@ -69,11 +69,11 @@ class SummaryStep extends StatelessWidget {
                 label: AppStrings.contactNumber)
                 .marginOnly(top: 12.h),
 
-            pageTextField(
-                controller: controller.municipalityCtr,
-                hintText: "Vancouver",
-                label: AppStrings.municipality)
-                .marginOnly(top: 12.h),
+            // pageTextField(
+            //     controller: controller.municipalityCtr,
+            //     hintText: "Vancouver",
+            //     label: AppStrings.municipality)
+            //     .marginOnly(top: 12.h),
 
             pageTextField(
                 controller: controller.additionalInformationCtr,

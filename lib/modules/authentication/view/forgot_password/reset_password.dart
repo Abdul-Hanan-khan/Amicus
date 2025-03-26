@@ -30,6 +30,7 @@ class ResetPassword extends StatelessWidget {
       top: true,
       backgroundColor: myColors.black,
       statusBarIconBrightness: Brightness.light,
+      statusBarColor: myColors.black,
 
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -123,6 +124,8 @@ class ResetPassword extends StatelessWidget {
                     controller: controller.passwordCtr,
                     keyboardType: TextInputType.visiblePassword,
                     obsecureText: controller.obscurePassword.value,
+                style: TextStyle(color: myColors.black,fontFamily: AppFonts.almarai),
+                labelStyle: TextStyle(color: Colors.grey,fontFamily: AppFonts.almarai),
                     border: true,
                     onChange: (v) {
                       controller.validatePassword();
@@ -151,7 +154,7 @@ class ResetPassword extends StatelessWidget {
                     ),
                     radius: 10.r,
                     prefixIcon:
-                        ImageViewer(url: AppAssets.iconKey).paddingAll(12.sp))
+                        ImageViewer(url: AppAssets.iconKey).paddingAll(16.sp))
                 .marginOnly(top: 28.h),
           ),
           Obx(
@@ -163,6 +166,8 @@ class ResetPassword extends StatelessWidget {
                     keyboardType: TextInputType.visiblePassword,
                     border: true,
                     obsecureText: controller.obscureConfirmPassword.value,
+                style: TextStyle(color: myColors.black,fontFamily: AppFonts.almarai),
+                labelStyle: TextStyle(color: Colors.grey,fontFamily: AppFonts.almarai),
                     onChange: (v) {
                       controller.validateConfirmPassword();
                     },
@@ -190,7 +195,7 @@ class ResetPassword extends StatelessWidget {
                     ),
                     radius: 10.r,
                     prefixIcon:
-                        ImageViewer(url: AppAssets.iconKey).paddingAll(12.sp))
+                        ImageViewer(url: AppAssets.iconKey).paddingAll(16.sp))
                 .marginOnly(top: 15.h),
           ),
           Obx(
@@ -199,7 +204,7 @@ class ResetPassword extends StatelessWidget {
               onTap: () {
                 controller.resetPassword();
               },
-              buttonText: AppStrings.getOtp,
+              buttonText: AppStrings.changePassword,
             ).marginOnly(top: 55.h, bottom: 10.h),
           )
         ],

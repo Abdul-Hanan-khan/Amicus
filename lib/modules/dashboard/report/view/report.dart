@@ -78,6 +78,7 @@ class ReportScreen extends StatelessWidget {
             ],
           ),
         ),
+        Divider(color: myColors.grey.setOpacity(0.4),height: 0.1,)
       ],
     );
   }

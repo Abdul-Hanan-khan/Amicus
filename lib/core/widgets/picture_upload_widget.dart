@@ -18,6 +18,7 @@ class PictureUploadWidget extends StatelessWidget {
   Widget? widget;
   String pictureName = '';
   double height;
+  bool getFromCameraOnly;
 
   Rx<PickerOutput>  output = PickerOutput().obs;
 
@@ -25,7 +26,7 @@ class PictureUploadWidget extends StatelessWidget {
 
   // Rx<PickerOutput> ? pickerOutPut;
 
-  PictureUploadWidget({super.key, this.onImageSelected,required this.height, required this.output});
+  PictureUploadWidget({super.key, this.onImageSelected,required this.height, required this.output, this.getFromCameraOnly =false});
 
   final GlobalKey _buttonKey = GlobalKey();
 
@@ -37,7 +38,13 @@ class PictureUploadWidget extends StatelessWidget {
             return    CustomDottedButton(
                 height: height,
                 onTap: () {
-                  _showPopupMenu(context);
+
+                  if(getFromCameraOnly){
+                    takePhoto(false);
+                  }else{
+                    _showPopupMenu(context);
+
+                  }
                 },
                 buttonKey: _buttonKey,
                 widget:  Column(
@@ -45,8 +52,8 @@ class PictureUploadWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 30.sp,
-                      height: 30.sp,
+                      width: 40.sp,
+                      height: 40.sp,
                       decoration:
                       BoxDecoration(
                           shape: BoxShape.circle, color: myColors.primary),
@@ -130,7 +137,7 @@ class PictureUploadWidget extends StatelessWidget {
             } else if (action == PictureUploadMenu.uploadFromGallery) {
               uploadPhotoFromGallery();
             } else {
-              takePhoto();
+              takePhoto(true);
             }
             // Get.back();
           },
@@ -167,7 +174,7 @@ class PictureUploadWidget extends StatelessWidget {
   }
 
   uploadPhotoFromGallery() {
-    FilePickerService.pick().then((value) {
+    FilePickerService.pick(allowExtensions:  ['jpg', 'jpeg', 'png', 'heic']).then((value) {
       if (value != null) {
         pictureName = value.fileNameWithExtension ?? '';
         picturePath.value = value.path ?? "";
@@ -178,7 +185,7 @@ class PictureUploadWidget extends StatelessWidget {
     Get.back();
   }
 
-  takePhoto() {
+  takePhoto(bool shouldGoBack) {
     FilePickerService.captureFromCamera().then((value) {
       if (value != null) {
         pictureName = value.fileNameWithExtension ?? '';
@@ -187,6 +194,8 @@ class PictureUploadWidget extends StatelessWidget {
         output.value = value;
       }
     });
-    Get.back();
+    if(shouldGoBack) {
+      Get.back();
+    }
   }
 }

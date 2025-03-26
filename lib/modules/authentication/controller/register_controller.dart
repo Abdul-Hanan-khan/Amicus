@@ -127,7 +127,13 @@ class RegisterController extends GetxController {
         MessageService.showSuccessDialog(
             title: AppStrings.verificationComplete,
             message: AppStrings.congratulationsYourAccountCreated,
-            barrierDismissible: false);
+            barrierDismissible: false,
+          onDone: (){
+              Get.back();
+              Get.offAllNamed(AppRoutes.dashboard);
+
+          }
+        );
         otpProcessing(false);
       });
     }

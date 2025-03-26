@@ -9,6 +9,7 @@ class LoginController extends GetxController {
 
   RxBool isLoading = false.obs;
   RxBool acceptSignInWithTouchAndFace = false.obs;
+  RxBool obscurePassword = true.obs;
 
   var emailCtr = TextEditingController();
   var passwordCtr = TextEditingController();
@@ -43,7 +44,9 @@ class LoginController extends GetxController {
     }
   }
 
-
+  togglePasswordVisibility(){
+    obscurePassword(!obscurePassword.value) ;
+  }
 
 
   bool validateAll(){
@@ -58,8 +61,10 @@ class LoginController extends GetxController {
 
 
   Future<void> performLogin() async {
-    validateAll();
-    Get.offAllNamed(AppRoutes.dashboard);
+
+    if(validateAll()){
+      Get.offAllNamed(AppRoutes.dashboard);
+    }
   }
 
 }

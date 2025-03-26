@@ -10,8 +10,10 @@ class BackWidget extends StatelessWidget {
   String? iconUrl;
   VoidCallback? onPressed;
   bool ? hasBorder;
+  Color? buttonColor;
+  Color? iconColor;
 
-  BackWidget({super.key, this.iconUrl, this.onPressed,this.hasBorder});
+  BackWidget({super.key, this.iconUrl, this.onPressed,this.hasBorder,this.iconColor,this.buttonColor});
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +29,10 @@ class BackWidget extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(color: hasBorder??false ? myColors.grey.setOpacity(0.5):Colors.transparent),
-          color:  myColors.grey.setOpacity(0.02),
+          color: buttonColor?? myColors.grey.setOpacity(0.02),
         ),
         // borderRadius: BorderRadius.circular(5.r)),
-        child: ImageViewer(url: iconUrl ?? AppAssets.iconArrowBack,color: myColors.blackWhiteAlternate,),
+        child: ImageViewer(url: iconUrl ?? AppAssets.iconArrowBack,color: iconColor?? myColors.blackWhiteAlternate,),
       ),
     );
   }

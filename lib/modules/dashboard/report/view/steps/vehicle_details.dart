@@ -222,7 +222,7 @@ class VehicleDetailsStep extends StatelessWidget {
           border: true,
           radius: 8.r,
           hintText: hintText,
-          label: null,
+          // label: null,
           keyboardType: inputType ?? TextInputType.text,
           spacingIfPrefixIsNull: 0,
           paddingBottom: 0,

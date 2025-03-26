@@ -11,6 +11,8 @@ class AppThemes {
         backgroundColor: Colors.white.setOpacity(0.98),
         blackWhiteAlternate: Colors.black,
         primaryNGrey: Color(0xffFCC000),
+        greyNPrimary: Colors.grey,
+        blackNPrimary: Colors.black,
         primary: Color(0xffFCC000),
         secondary: Color(0xffEC7826),
         containerColor: Colors.white,
@@ -38,6 +40,8 @@ class AppThemes {
         backgroundColor: Colors.black,
         blackWhiteAlternate: Colors.white,
         primaryNGrey: Colors.grey,
+        greyNPrimary: Color(0xffFCC000),
+        blackNPrimary: Color(0xffFCC000),
         primary: Color(0xffFCC000),
         secondary: Color(0xffEC7826),
         containerColor: Color(0xff1C1C1C),
@@ -64,6 +68,8 @@ class MyColors extends ThemeExtension<MyColors> {
   final Color blackWhiteAlternate;
   final Color primary;
   final Color primaryNGrey;
+  final Color blackNPrimary;
+  final Color greyNPrimary;
   final Color secondary;
   final Color containerColor;
   final Color textColor;
@@ -85,6 +91,8 @@ class MyColors extends ThemeExtension<MyColors> {
     required this.blackWhiteAlternate,
     required this.primary,
     required this.primaryNGrey,
+    required this.blackNPrimary,
+    required this.greyNPrimary,
     required this.secondary,
     required this.containerColor,
     required this.textColor,
@@ -108,9 +116,11 @@ class MyColors extends ThemeExtension<MyColors> {
       blackWhiteAlternate: Colors.black,
       primary: Colors.orange,
       primaryNGrey: Colors.orange,
+      greyNPrimary: Colors.grey,
+      blackNPrimary: Colors.black,
       secondary: Color(0xffEC7826),
-      containerColor: Color(0xff1C1C1C),
-      textColor: Color(0xff7F7F7F),
+      containerColor: Color(0xffffffff),
+      textColor: Color(0xff000000),
       blueAccent: Color(0xff4A86F7),
       blackNWhite: Color(0xffffffff),
       stepperGrey: Color(0xffF5F5F5),
@@ -132,6 +142,8 @@ class MyColors extends ThemeExtension<MyColors> {
       Color? backgroundColor,
       Color? primary,
       Color? primaryNGrey,
+      Color? greyNPrimary,
+      Color? blackNPrimary,
       Color? secondary,
       Color? containerColor,
       Color? textColor,
@@ -152,6 +164,8 @@ class MyColors extends ThemeExtension<MyColors> {
       blackWhiteAlternate: blackWhiteAlternate ?? this.blackWhiteAlternate,
       primary: primary ?? this.primary,
       primaryNGrey: primaryNGrey ?? this.primaryNGrey,
+      greyNPrimary: greyNPrimary ?? this.greyNPrimary,
+      blackNPrimary: blackNPrimary ?? this.blackNPrimary,
       secondary: secondary ?? this.secondary,
       containerColor: containerColor ?? this.containerColor,
       textColor: textColor ?? this.textColor,
@@ -177,6 +191,8 @@ class MyColors extends ThemeExtension<MyColors> {
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t)!,
       blackWhiteAlternate: Color.lerp(blackWhiteAlternate, other.blackWhiteAlternate, t)!,
       primaryNGrey: Color.lerp(primaryNGrey, other.primaryNGrey, t)!,
+      greyNPrimary: Color.lerp(greyNPrimary, other.greyNPrimary, t)!,
+      blackNPrimary: Color.lerp(blackNPrimary, other.blackNPrimary, t)!,
       primary: Color.lerp(primary, other.primary, t)!,
       secondary: Color.lerp(secondary, other.secondary, t)!,
       containerColor: Color.lerp(containerColor, other.containerColor, t)!,

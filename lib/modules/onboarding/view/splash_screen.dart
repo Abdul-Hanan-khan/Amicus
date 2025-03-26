@@ -33,7 +33,10 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return BaseScaffold(
           backgroundColor: myColors.white,
+            // isAuthentication: true,
+        // enforceTheming: false,
             statusBarIconBrightness: Brightness.dark,
+            statusBarColor: myColors.white,
             body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,

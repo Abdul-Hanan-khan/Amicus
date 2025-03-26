@@ -1,4 +1,5 @@
 import 'package:amicus/core/extensions/opacity_color_extension.dart';
+import 'package:amicus/core/extensions/responsive_size_extension.dart';
 import 'package:amicus/core/routes/app_routes.dart';
 import 'package:amicus/core/utills/app_assets.dart';
 import 'package:amicus/core/utills/app_fonts.dart';
@@ -7,6 +8,7 @@ import 'package:amicus/core/utills/themes/app_themes.dart';
 import 'package:amicus/core/utills/themes/theme_controller.dart';
 import 'package:amicus/core/widgets/base_scaffold.dart';
 import 'package:amicus/core/widgets/custom_button.dart';
+import 'package:amicus/core/widgets/custom_container.dart';
 import 'package:amicus/core/widgets/custom_text.dart';
 import 'package:amicus/core/widgets/custom_text_field.dart';
 import 'package:amicus/core/widgets/image_viewer.dart';
@@ -27,67 +29,81 @@ class RegisterScreen extends StatelessWidget {
 
     return BaseScaffold(
       top: true,
-
+      // bottom: true,
+      // isAuthentication: true,
       backgroundColor: myColors.black,
       statusBarIconBrightness: Brightness.light,
+      statusBarColor: myColors.black,
 
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return SingleChildScrollView(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(minHeight: constraints.maxHeight),
-              child: IntrinsicHeight(
-                // Makes the column take the least height required
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: Get.width,
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+
+          LayoutBuilder(
+            builder: (context, constraints) {
+              return SingleChildScrollView(
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                  child: IntrinsicHeight(
+                    // Makes the column take the least height required
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: Get.width,
+                        ),
+                        topSection(),
+                        Expanded(child: inputSection(context))
+                      ],
                     ),
-                    topSection(),
-                    Expanded(child: inputSection(context))
-                  ],
+                  ),
                 ),
-              ),
-            ),
-          );
-        },
+              );
+            },
+          ),
+          Container(width: Get.width,height: 30.hr(context),color: Colors.white,)
+        ],
       ),
     );
   }
 
   Widget topSection() {
-    return Column(
+    return Stack(
       children: [
-        ImageViewer(
-          width: 222.w,
-          height: 112.h,
-          url: AppAssets.appLogo,
-          color: myColors.white,
-        ).marginOnly(top: 5.h),
-        Row(
+        Column(
           children: [
-            CustomText(
-              text: AppStrings.alreadyHaveAnAccount,
-              fontColor: myColors.white,
-              fontFamily: AppFonts.helveticaNeue,
-            ),
-            GestureDetector(
-              onTap: () {
-                Get.offNamed(AppRoutes.login);
-              },
-              child: CustomText(
-                text: AppStrings.login,
-                fontColor: myColors.primary,
-                fontFamily: AppFonts.helveticaNeue,
-              ).paddingOnly(left: 7.w),
-            )
+            ImageViewer(
+              width: 222.w,
+              height: 112.h,
+              url: AppAssets.appLogo,
+              color: myColors.white,
+            ).marginOnly(top: 5.h),
+            Row(
+              children: [
+                CustomText(
+                  text: AppStrings.alreadyHaveAnAccount,
+                  fontColor: myColors.white,
+                  fontFamily: AppFonts.helveticaNeue,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.offNamed(AppRoutes.login);
+                  },
+                  child: CustomText(
+                    text: AppStrings.login,
+                    fontColor: myColors.primary,
+                    fontFamily: AppFonts.helveticaNeue,
+                  ).paddingOnly(left: 7.w),
+                )
+              ],
+            ).marginOnly(top: 44.h),
           ],
-        ).marginOnly(top: 44.h),
+        ).paddingSymmetric(horizontal: 21.w),
+
       ],
-    ).paddingSymmetric(horizontal: 21.w);
+    );
   }
 
   Widget inputSection(BuildContext context) {
@@ -118,37 +134,47 @@ class RegisterScreen extends StatelessWidget {
             label: AppStrings.fullName,
             bgcolor: Colors.transparent,
             controller: controller.fullNameCtr,
+            style: TextStyle(color: myColors.black,fontFamily: AppFonts.almarai),
+            labelStyle: TextStyle(color: Colors.grey,fontFamily: AppFonts.almarai),
+
             // validate: controller.validateEmail() ,
             border: true,
             onChange: (value) => controller.validateFullName(),
             // borderColor:myColors.primaryColor,
             radius: 10.r,
-            prefixIcon: ImageViewer(url: AppAssets.iconPerson).paddingAll(12.sp),
+            prefixIcon: ImageViewer(url: AppAssets.iconPerson).paddingAll(16.sp),
           ).marginOnly(top: 21.h),
-          CustomTextField(
-            errorMessage: controller.errorEmail,
-            label: AppStrings.email,
-            bgcolor: Colors.transparent,
-            controller: controller.emailCtr,
-            // validate: controller.validateEmail() ,
-            border: true,
-            onChange: (value) => controller.validateEmail(),
-            // borderColor:myColors.primaryColor,
-            radius: 10.r,
-            prefixIcon: ImageViewer(url: AppAssets.iconMail).paddingAll(12.sp),
-          ).marginOnly(top: 10.h),
+
 
           CustomTextField(
             errorMessage: controller.errorPhone,
             label: AppStrings.phoneNumber,
             bgcolor: Colors.transparent,
             controller: controller.phoneNumberCtr,
+            style: TextStyle(color: myColors.black,fontFamily: AppFonts.almarai),
+            labelStyle: TextStyle(color: Colors.grey,fontFamily: AppFonts.almarai),
+
             // validate: controller.validateEmail() ,
             border: true,
             onChange: (value) => controller.validatePhone(),
             // borderColor:myColors.primaryColor,
             radius: 10.r,
-            prefixIcon: ImageViewer(url: AppAssets.iconPhone).paddingAll(12.sp),
+            prefixIcon: ImageViewer(url: AppAssets.iconPhone).paddingAll(16.sp),
+          ).marginOnly(top: 10.h),
+          CustomTextField(
+            errorMessage: controller.errorEmail,
+            label: AppStrings.emailAddress,
+            bgcolor: Colors.transparent,
+            controller: controller.emailCtr,
+            keyboardType: TextInputType.emailAddress,style: TextStyle(color: myColors.black,fontFamily: AppFonts.almarai),
+            labelStyle: TextStyle(color: Colors.grey,fontFamily: AppFonts.almarai),
+
+            // validate: controller.validateEmail() ,
+            border: true,
+            onChange: (value) => controller.validateEmail(),
+            // borderColor:myColors.primaryColor,
+            radius: 10.r,
+            prefixIcon: ImageViewer(url: AppAssets.iconMail).paddingAll(16.sp),
           ).marginOnly(top: 10.h),
           Obx(
             ()=> CustomTextField(
@@ -156,13 +182,15 @@ class RegisterScreen extends StatelessWidget {
               controller: controller.passwordCtr,
               label: AppStrings.password,
               bgcolor: Colors.transparent,
+              style: TextStyle(color: myColors.black,fontFamily: AppFonts.almarai),
+              labelStyle: TextStyle(color: Colors.grey,fontFamily: AppFonts.almarai),
 
               border: true,
               onChange: (v) {
                 controller.validatePassword();
               },
               radius: 10.r,
-              prefixIcon: ImageViewer(url: AppAssets.iconKey).paddingAll(12.sp),
+              prefixIcon: ImageViewer(url: AppAssets.iconKey).paddingAll(16.sp),
               suffixIcon:  GestureDetector(
                 onTap: () {
                   controller.togglePasswordVisibility();
@@ -187,28 +215,47 @@ class RegisterScreen extends StatelessWidget {
             ).marginOnly(top: 10.h),
           ),
 
-          Row(
-            children: [
-              Obx(() => Checkbox(
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                activeColor: myColors.primary,
-                side: BorderSide(color: myColors.grey),
-                value: controller.termsAccepted.value,
-                onChanged: (value) {
-                  controller.termsAccepted.value = value!;
-                },
-              )),
-              CustomText(
-                text: AppStrings.agreeToAll,
-                fontSize: 14.sp,
-              ),
-              CustomText(
-                text: AppStrings.termsNConditions,
-                fontSize: 14.sp,
-                fontColor: myColors.primary,
-              ).marginOnly(left: 5.w),
-            ],
-          ).marginOnly(top: 12.h),
+          SizedBox(height: 20.hr(context),),
+          Container(
+            // color: Colors.orange.setOpacity(0.5),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Obx(() => GestureDetector(
+                  onTap: (){
+                    controller.termsAccepted.value=!controller.termsAccepted.value;
+                  },
+                  child: CustomContainer(
+
+                    duration: Duration(milliseconds: 200),
+                    width: 18.spr(context),
+                    height: 18.spr(context),
+                    decoration: BoxDecoration(
+                      color: controller.termsAccepted.value?myColors.primary:Colors.white,
+                      borderRadius: BorderRadius.circular(5.rr(context)),
+                      border: Border.all(color:controller.termsAccepted.value?Colors.transparent: myColors.grey),
+                    ),
+                    child: Icon(
+                      Icons.check_rounded,
+                      color: myColors.white,
+                      size: 15.spr(context),
+                    ),
+                  ),
+                )),
+                CustomText(
+                  text: AppStrings.agreeToAll,
+                  fontSize: 13.sp,
+                  fontColor: myColors.black,
+                ).marginOnly(left: 10.wr(context)),
+                CustomText(
+                  text: AppStrings.termsNConditions,
+                  fontSize: 13.sp,
+                  fontColor: myColors.primary,
+                ).marginOnly(left: 5.w,top: 3.hr(context)),
+              ],
+            ),
+          ),
+
           Obx(
               ()=> CustomButton(
                 buttonText: AppStrings.createAccount,
@@ -217,7 +264,7 @@ class RegisterScreen extends StatelessWidget {
                   controller.sendOTP(context);
                 })
                 .marginOnly(top: 12.h),
-          ),
+          ).marginOnly(top: 20.hr(context)),
           Row(
             children: [
               Expanded(
@@ -258,7 +305,7 @@ class RegisterScreen extends StatelessWidget {
                 ),
               ),
             ],
-          ).marginOnly(top: 30.h)
+          ).marginOnly(top: 30.h,bottom: 35.h)
         ],
       ),
     );

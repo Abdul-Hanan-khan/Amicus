@@ -37,80 +37,132 @@ class MyBountiesSection extends StatelessWidget {
       width: double.infinity,
       margin: EdgeInsets.symmetric(
           vertical: 10.hr(context), horizontal: 20.wr(context)),
-      padding: EdgeInsets.all(12.spr(context)),
+      padding: EdgeInsets.symmetric(horizontal: 12.wr(context),vertical: 8.hr(context)),
       decoration: BoxDecoration(
         color: myColors.containerColor,
         borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(color: myColors.black.setOpacity(0.2), width: 0.5),
+        border: Border.all(color: myColors.black.setOpacity(0.1), width: 0.5),
         boxShadow: [
           BoxShadow(
-            color: myColors.grey.setOpacity(0.1),
+            color: myColors.grey.setOpacity(0.05),
             blurRadius: 3,
             spreadRadius: 3,
           ),
         ],
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              CustomText(
-                text: AppStrings.submitted,
-                fontSize: 16.spr(context),
-                fontWeight: FontWeight.bold,
-                fontColor: myColors.blueAccent,
-              ),
-              CustomText(
-                text: "15",
-                fontSize: 24.spr(context),
-                fontFamily: AppFonts.helveticaNeueBold,
-                fontColor: myColors.blueAccent,
-              )
-            ],
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              CustomText(
-                text: AppStrings.reviewed,
-                fontSize: 16.spr(context),
-                fontWeight: FontWeight.bold,
-                fontColor: myColors.green,
-              ),
-              CustomText(
-                text: "08",
-                fontSize: 24.spr(context),
-                fontFamily: AppFonts.helveticaNeueBold,
-                fontColor: myColors.green,
-              )
-            ],
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.wr(context)),
-            decoration: BoxDecoration(
-                color: myColors.primary,
-                borderRadius: BorderRadius.circular(10.r)),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CustomText(
-                  text: AppStrings.submitted,
-                  fontSize: 16.spr(context),
-                  fontWeight: FontWeight.bold,
-                  fontColor: myColors.white,
+      child: Obx(
+        ()=> Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+
+            GestureDetector(
+              onTap: (){
+                controller.updatedBountiesBySelectedFilter(0);
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 10.wr(context)),
+                decoration: BoxDecoration(
+                    color: controller.selectedFilter.value==0? myColors.primary:Colors.transparent,
+                    borderRadius: BorderRadius.circular(10.r)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomText(
+                      text: AppStrings.submitted,
+                      fontSize: 16.spr(context),
+                      fontWeight: FontWeight.bold,
+                      // animateColor: false,
+
+                      fontColor:controller.selectedFilter.value==0?myColors.white : myColors.blueAccent,
+                    ),
+                    SizedBox(height: 2.hr(context),),
+
+                    CustomText(
+                      text: "06",
+                      fontSize: 22.spr(context),
+                      fontFamily: AppFonts.helveticaNeueBold,
+
+                      // animateColor: false,
+
+                      fontColor:controller.selectedFilter.value==0?myColors.white : myColors.blueAccent,
+                    )
+                  ],
                 ),
-                CustomText(
-                  text: "06",
-                  fontSize: 24.spr(context),
-                  fontFamily: AppFonts.helveticaNeueBold,
-                  fontColor: myColors.white,
-                )
-              ],
+              ),
             ),
-          ),
-        ],
+
+
+            GestureDetector(
+              onTap: (){
+                controller.updatedBountiesBySelectedFilter(1);
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 10.wr(context)),
+                decoration: BoxDecoration(
+                    color: controller.selectedFilter.value==1? myColors.primary:Colors.transparent,
+                    borderRadius: BorderRadius.circular(10.r)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomText(
+                      text: AppStrings.submitted,
+                      fontSize: 16.spr(context),
+                      fontWeight: FontWeight.bold,
+                      // animateColor: false,
+                      fontColor:controller.selectedFilter.value==1?myColors.white : myColors.green,
+                    ),
+                    SizedBox(height: 2.hr(context),),
+
+                    CustomText(
+                      // animateColor: false,
+
+                      text: "06",
+                      fontSize: 22.spr(context),
+                      fontFamily: AppFonts.helveticaNeueBold,
+                      fontColor:controller.selectedFilter.value==1?myColors.white : myColors.green,
+                    )
+                  ],
+                ),
+              ),
+            ),
+
+            GestureDetector(
+              onTap: (){
+                controller.updatedBountiesBySelectedFilter(2);
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 10.wr(context)),
+                decoration: BoxDecoration(
+                    color: controller.selectedFilter.value==2? myColors.primary:Colors.transparent,
+                    borderRadius: BorderRadius.circular(10.r)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomText(
+                      text: AppStrings.submitted,
+                      fontSize: 16.spr(context),
+                      fontWeight: FontWeight.bold,
+                      // animateColor: false,
+
+                      fontColor:controller.selectedFilter.value==2?myColors.white : myColors.primary,
+                    ),
+                    SizedBox(height: 2.hr(context),),
+
+                    CustomText(
+                      text: "06",
+                      fontSize: 22.spr(context),
+                      // animateColor: false,
+
+                      fontFamily: AppFonts.helveticaNeueBold,
+                      fontColor:controller.selectedFilter.value==2?myColors.white: myColors.primary
+                      ,
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -152,10 +204,10 @@ class MyBountiesSection extends StatelessWidget {
         decoration: BoxDecoration(
           color: myColors.containerColor,
           borderRadius: BorderRadius.circular(10.r),
-          border: Border.all(color: myColors.black.setOpacity(0.2), width: 0.5),
+          border: Border.all(color: myColors.black.setOpacity(0.1), width: 0.5),
           boxShadow: [
             BoxShadow(
-              color: myColors.grey.setOpacity(0.1),
+              color: myColors.grey.setOpacity(0.05),
               blurRadius: 1,
               spreadRadius: 1,
             ),

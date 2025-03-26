@@ -57,7 +57,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
                   child: DropdownButton<String>(
                     isExpanded: true,
                     isDense: true, // Reduces unnecessary padding
-                    dropdownColor: myColors.white,
+                    dropdownColor: myColors.containerColor,
                     padding: EdgeInsets.zero,
                     borderRadius: BorderRadius.circular(8.r),
                     icon: Align(
@@ -76,7 +76,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
                         .toList(),
                     onChanged: (value) {
                       setState(() {
-                        widget.selectedValue = value;
+                          widget.selectedValue = value;
                       });
                       if (value != null) {
                         widget.onChanged(value);

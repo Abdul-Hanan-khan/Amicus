@@ -8,8 +8,8 @@ import 'package:get/get.dart';
 
 import 'custom_text.dart';
 
-class CustomTextField extends StatelessWidget {
-  final TextEditingController? controller;
+class CustomTextField extends StatefulWidget {
+   TextEditingController ?controller;
   final Widget? prefixIcon;
   final bool? icon;
   final String? keyValue;
@@ -45,7 +45,9 @@ class CustomTextField extends StatelessWidget {
   final Color? iconColor;
   bool? enabled;
   TextStyle? style;
+  TextStyle? labelStyle;
   TextStyle? hintStyle;
+
 
   CustomTextField(
       {Key? key,
@@ -82,13 +84,32 @@ class CustomTextField extends StatelessWidget {
       this.contentPadding,
       this.paddingBottom,
       this.style,
+        this.labelStyle,
       this.autoFocus,
       this.hintStyle})
       : super(key: key);
 
   @override
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
+  final FocusNode _focusNode = FocusNode();
+
+  RxBool isFocused = false.obs;
+
+  @override
+  void initState() {
+    _focusNode.addListener(() {
+      isFocused.value = _focusNode.hasFocus;
+    });
+    // TODO: implement initState
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-    borderColor ??= const Color(0xff8D8D8D).setOpacity(0.2);
+    widget.borderColor ??= const Color(0xff8D8D8D).setOpacity(0.2);
+    widget.controller ??= TextEditingController();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,9 +118,9 @@ class CustomTextField extends StatelessWidget {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-            color: bgcolor ?? myColors.grey.setOpacity(0.2),
-            borderRadius: BorderRadius.circular(radius ?? 18.r),
-            boxShadow: shadow
+            color: widget.bgcolor ?? myColors.grey.setOpacity(0.2),
+            borderRadius: BorderRadius.circular(widget.radius ?? 18.r),
+            boxShadow: widget.shadow
                 ? [
                     BoxShadow(
                       color: Colors.grey.shade200,
@@ -109,94 +130,97 @@ class CustomTextField extends StatelessWidget {
                   ]
                 : [],
           ),
-          child: TextFormField(
-            textAlign: TextAlign.start,
-            textAlignVertical: TextAlignVertical.center,
-            initialValue: initialValue,
-            autofocus: autoFocus ?? false,
-            enabled: enabled ?? true,
-            style: style ??
-                 TextStyle(
-                  color: myColors.textColor,
-                  fontSize: 15.0,
-                ),
-            onTap: ontap,
-            readOnly: readonly,
-            controller: controller,
-            keyboardType: keyboardType ?? TextInputType.text,
-            onChanged: onChange,
-            inputFormatters: inputFormatters,
-            cursorColor: myColors.grey,
-            obscureText: obsecureText,
-            maxLines: maxLines,
-            decoration: InputDecoration(
-              suffixIconConstraints: BoxConstraints(
-                minHeight: 8.sp,
-                minWidth: 8.sp,
-              ),
-
-              hintText: hintText,
-              isCollapsed: true,
-              labelText: label,
-              labelStyle: TextStyle(
-                  fontSize: 12.sp,
-                  fontFamily: AppFonts.almarai,
-
-                  color: myColors.textColor),
-              contentPadding: contentPadding ?? const EdgeInsets.all(15),
-              fillColor: Colors.transparent,
-              filled: true,
-              prefix: prefixIcon != null
-                  ? null
-                  : SizedBox(
-                      width: spacingIfPrefixIsNull ?? 20.w,
-                    ),
-              prefixIcon: prefixIcon,
-              suffixIcon: suffixIcon,
-              hintStyle: hintStyle ??
-                  TextStyle(
-                    fontSize: 15.sp,
-                    // color: myColors.textColor.setOpacity(0.7),
+          child: Obx(
+            ()=> TextFormField(
+              focusNode: _focusNode,
+              textAlign: TextAlign.start,
+              textAlignVertical: TextAlignVertical.center,
+              initialValue: widget.initialValue,
+              autofocus: widget.autoFocus ?? false,
+              enabled: widget.enabled ?? true,
+              style: widget.style ??
+                   TextStyle(
+                    color: isFocused.value? myColors.blackNPrimary:myColors.textColor,
+                    fontSize: 15.0,
                   ),
-              focusedErrorBorder: border == true
-                  ? OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(color: Colors.teal, width: 2),
-                      borderRadius: BorderRadius.circular(radius ?? 18.r),
-                    )
-                  : InputBorder.none,
-              focusedBorder: border == true
-                  ? OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: myColors.primary.setOpacity(.5),
-                          width: 2),
-                      borderRadius: BorderRadius.circular(radius ?? 18.r),
-                    )
-                  : InputBorder.none,
-              enabledBorder: border == true
-                  ? OutlineInputBorder(
+              onTap: widget.ontap,
+              readOnly: widget.readonly,
+              controller: widget.controller,
+              keyboardType: widget.keyboardType ?? TextInputType.text,
+              onChanged: widget.onChange,
+              inputFormatters: widget.inputFormatters,
+              cursorColor: myColors.grey,
+              obscureText: widget.obsecureText,
+              maxLines: widget.maxLines,
+              decoration: InputDecoration(
+                suffixIconConstraints: BoxConstraints(
+                  minHeight: 8.sp,
+                  minWidth: 8.sp,
+                ),
 
-                      borderSide: BorderSide(
-                        color: shadow ? Colors.transparent : borderColor!,
+                hintText: widget.hintText,
+                isCollapsed: true,
+                labelText: widget.label == null ?null:"${widget.label!}${isFocused.value || widget.controller!.text.isNotEmpty ?" *":""}",
+                labelStyle: widget.labelStyle?? TextStyle(
+                    fontSize: 13.sp,
+                    fontFamily: AppFonts.almarai,
+                    color: isFocused.value? myColors.blackNPrimary:myColors.textColor),
+                contentPadding: widget.contentPadding ?? const EdgeInsets.all(15),
+                focusColor: myColors.primary,
+                fillColor: Colors.transparent,
+                filled: true,
+                prefix: widget.prefixIcon != null
+                    ? null
+                    : SizedBox(
+                        width: widget.spacingIfPrefixIsNull ?? 20.w,
                       ),
-                      borderRadius: BorderRadius.circular(radius ?? 18.r),
-                    )
-                  : InputBorder.none,
-              isDense: false,
+                prefixIcon: widget.prefixIcon,
+                suffixIcon: widget.suffixIcon,
+                hintStyle: widget.hintStyle ??
+                    TextStyle(
+                      fontSize: 15.sp,
+                      // color: myColors.textColor.setOpacity(0.7),
+                    ),
+                focusedErrorBorder: widget.border == true
+                    ? OutlineInputBorder(
+                        borderSide:
+                            const BorderSide(color: Colors.teal, width: 2),
+                        borderRadius: BorderRadius.circular(widget.radius ?? 18.r),
+                      )
+                    : InputBorder.none,
+                focusedBorder: widget.border == true
+                    ? OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: myColors.primary,
+                            width: 2),
+                        borderRadius: BorderRadius.circular(widget.radius ?? 18.r),
+                      )
+                    : InputBorder.none,
+                enabledBorder: widget.border == true
+                    ? OutlineInputBorder(
+
+                        borderSide: BorderSide(
+                          color: widget.shadow ? Colors.transparent : widget.borderColor!,
+                        ),
+                        borderRadius: BorderRadius.circular(widget.radius ?? 18.r),
+                      )
+                    : InputBorder.none,
+                isDense: false,
+              ),
             ),
           ),
         ),
         Obx(
-          () => (errorMessage.value.isEmpty)
+          () => (widget.errorMessage.value.isEmpty)
               ? SizedBox(
-                  height: paddingBottom ?? 10,
+                  height: widget.paddingBottom ?? 10,
                 )
               : Container(
                   padding: EdgeInsets.only(
                       left: 10.w, right: 10.w, top: 5.h, bottom: 10.h),
                   alignment: Alignment.centerLeft,
                   child: CustomText(
-                    text: errorMessage.value,
+                    text: widget.errorMessage.value,
                     fontColor: myColors.error,
                     fontSize: 12.sp,
                   ),

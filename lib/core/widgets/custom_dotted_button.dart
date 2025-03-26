@@ -49,7 +49,7 @@ class CustomDottedButton extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.r),
-            color: buttonColor?? myColors.primary.setOpacity(0.05),
+            color: buttonColor?? myColors.primary.setOpacity(0.15),
           ),
           child:widget?? Center(
             child: CustomText(

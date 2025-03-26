@@ -54,7 +54,8 @@ class AppAssets{
   static String iconStarDecorated = "assets/icons/icon_star_decorated.svg";
   static String iconEdgedContainer = "assets/icons/edged_container.svg";
   static String iconSuccess = "assets/icons/icon_success.svg";
-  static String iconSuccessDanger = "assets/icons/icon_success_danger.svg";
+  static String iconCancel = "assets/icons/icon_cancel.svg";
+  // static String iconSuccessDanger = "assets/icons/icon_success_danger.svg";
   static String imgNotchedContainer = "assets/images/noteched_container.svg";
 
 

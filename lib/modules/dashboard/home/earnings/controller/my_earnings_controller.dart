@@ -8,12 +8,17 @@ import 'package:get/get.dart';
 class MyEarningsController extends GetxController {
   RxBool fetchingBounties = false.obs;
   MyBountiesModel bounties = MyBountiesModel();
+  RxInt selectedFilter = 2.obs;
 
   @override
   void onInit() {
     fetchMyBounties();
     // TODO: implement onInit
     super.onInit();
+  }
+
+  updatedBountiesBySelectedFilter(int index){
+    selectedFilter(index);
   }
 
   Future<void> fetchMyBounties() async {

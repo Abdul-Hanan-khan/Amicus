@@ -120,10 +120,10 @@ class HomeScreen extends StatelessWidget {
               color: myColors.containerColor,
               borderRadius: BorderRadius.circular(10.rr(context)),
               border:
-                  Border.all(color: myColors.black.setOpacity(0.2), width: 0.5),
+                  Border.all(color: myColors.black.setOpacity(0.1), width: 0.5),
               boxShadow: [
                 BoxShadow(
-                  color: myColors.grey.setOpacity(0.1),
+                  color: myColors.grey.setOpacity(0.07),
                   blurRadius: 3,
                   spreadRadius: 3,
                   // offset: Offset(0, -5),
@@ -154,7 +154,7 @@ class HomeScreen extends StatelessWidget {
                         fontSize: 44.spr(context),
                         fontColor: myColors.blackWhiteAlternate,
                         fontFamily: AppFonts.helveticaNeueBold,
-                      ).marginOnly(right: 2.wr(context)),
+                      ).marginOnly(right: 17.wr(context)),
                       CustomText(
                         text: AppStrings.earned,
                         fontColor: myColors.grey,
@@ -212,10 +212,10 @@ class HomeScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: myColors.containerColor,
         borderRadius: BorderRadius.circular(10.rr(context)),
-        border: Border.all(color: myColors.black.setOpacity(0.2), width: 0.5),
+        border: Border.all(color: myColors.black.setOpacity(0.1), width: 0.5),
         boxShadow: [
           BoxShadow(
-            color: myColors.grey.setOpacity(0.1),
+            color: myColors.grey.setOpacity(0.07),
             blurRadius: 3,
             spreadRadius: 3,
             // offset: Offset(0, -5),
@@ -273,19 +273,17 @@ class HomeScreen extends StatelessWidget {
           ),
 
           SizedBox(
-            height: 20.hr(context),
+            height: 30.hr(context),
           ),
 
           Container(
             width: Get.width,
-            height: 52.hr(context),
+            height: 35.hr(context),
             child: Center(
               child: Stack(
                 clipBehavior: Clip.none,
                 alignment: Alignment.centerRight,
                 children: [
-
-
                   HorizontalProgressBar(
                     progress: 0.4,
                     progressColor: myColors.primary,
@@ -294,39 +292,10 @@ class HomeScreen extends StatelessWidget {
                         width: 25.spr(context),
                         url: AppAssets.iconStarGoal),
                   ),
-
-                  Positioned(
-                    bottom: -35.hr(context),
-                    left: 0.wr(context),
-                    right: 0.wr(context),
-                    child: Container(
-                      width:  Get.width,
-
-                      child: Row(
-                        children: [
-                          CustomText(
-                            text: AppStrings.badgesEarned,
-                            fontColor: myColors.grey,
-                            fontFamily: AppFonts.helveticaNeue,
-                          ),
-                          Spacer(),
-                          ImageViewer(
-                              height: 14.hr(context),
-                              width: 14.5.wr(context),
-                              url: AppAssets.iconBadge),
-                          CustomText(
-                            text: "0",
-                            fontSize: 18.spr(context),
-                            fontFamily: AppFonts.helveticaNeueBold,
-                          ).marginOnly(left: 7.wr(context)),
-                        ],
-                      ),
-                    ),
-                  ),
                   Positioned(
                     right: -7.wr(context),
                     child: GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         controller.toggleTargetViewSmall();
                       },
                       child: Stack(
@@ -334,11 +303,21 @@ class HomeScreen extends StatelessWidget {
                         fit: StackFit.loose,
                         clipBehavior: Clip.none,
                         children: [
-
-                          ImageViewer(
-                              height: 32.hr(context),
-                              width: 26.wr(context),
-                              url: AppAssets.rankContainers),
+                          Container(
+                             decoration: BoxDecoration(
+                               shape: BoxShape.circle,
+                               boxShadow: [BoxShadow(
+                                 color: myColors.black.setOpacity(0.2),
+                                 spreadRadius: 1,
+                                 blurRadius: 5,
+                                 offset: Offset(0, 5)
+                               )]
+                             ),
+                            child: ImageViewer(
+                                height: 32.hr(context),
+                                width: 26.wr(context),
+                                url: AppAssets.rankContainers),
+                          ),
                           CustomText(
                             text: "2",
                             fontSize: 16.spr(context),
@@ -358,12 +337,137 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-
                 ],
               ),
             ),
           ),
-          SizedBox(height: 27.hr(context),),
+          SizedBox(
+            height: 10.hr(context),
+          ),
+          SizedBox(
+              // height: 30.hr(context),
+              width: Get.width*0.7,
+              // color: Colors.orange,
+              child: Obx(
+                () => Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomText(
+                      text: AppStrings.badgesEarned,
+                      fontColor: myColors.grey,
+                      fontFamily: AppFonts.helveticaNeue,
+                    ),
+                    Spacer(),
+                    AnimatedOpacity(
+                      duration: Duration(milliseconds: 1.0-controller.targetOpacitySmall.value>0?1000:100),
+                      opacity: 1.0-controller.targetOpacitySmall.value,
+                      child: ImageViewer(
+                          height: 14.hr(context),
+                          width: 14.5.wr(context),
+                          url: AppAssets.iconBadge),
+                    ),
+                    AnimatedOpacity(
+                      duration: Duration(milliseconds: 1.0-controller.targetOpacitySmall.value>0?1000: 100),
+                      opacity: 1.0-controller.targetOpacitySmall.value,
+                      child: CustomText(
+                        text: "0",
+                        fontSize: 18.spr(context),
+                        fontFamily: AppFonts.helveticaNeueBold,
+                      ).marginOnly(left: 7.wr(context)),
+                    ),
+                  ],
+                ),
+              )),
+
+          // Container(
+          //   width: Get.width,
+          //   height: 52.hr(context),
+          //   child: Center(
+          //     child: Stack(
+          //       clipBehavior: Clip.none,
+          //       alignment: Alignment.centerRight,
+          //       children: [
+          //
+          //
+          //         HorizontalProgressBar(
+          //           progress: 0.4,
+          //           progressColor: myColors.primary,
+          //           indicatorWidget: ImageViewer(
+          //               height: 25.spr(context),
+          //               width: 25.spr(context),
+          //               url: AppAssets.iconStarGoal),
+          //         ),
+          //
+          //         // Positioned(
+          //         //   bottom: -35.hr(context),
+          //         //   left: 0.wr(context),
+          //         //   right: 0.wr(context),
+          //         //   child: Container(
+          //         //     width:  Get.width,
+          //         //     child: Row(
+          //         //       children: [
+          //         //         CustomText(
+          //         //           text: AppStrings.badgesEarned,
+          //         //           fontColor: myColors.grey,
+          //         //           fontFamily: AppFonts.helveticaNeue,
+          //         //         ),
+          //         //         Spacer(),
+          //         //         ImageViewer(
+          //         //             height: 14.hr(context),
+          //         //             width: 14.5.wr(context),
+          //         //             url: AppAssets.iconBadge),
+          //         //         CustomText(
+          //         //           text: "0",
+          //         //           fontSize: 18.spr(context),
+          //         //           fontFamily: AppFonts.helveticaNeueBold,
+          //         //         ).marginOnly(left: 7.wr(context)),
+          //         //       ],
+          //         //     ),
+          //         //   ),
+          //         // ),
+          //         Positioned(
+          //           right: -7.wr(context),
+          //           child: GestureDetector(
+          //             onTap: (){
+          //               controller.toggleTargetViewSmall();
+          //             },
+          //             child: Stack(
+          //               alignment: Alignment.center,
+          //               fit: StackFit.loose,
+          //               clipBehavior: Clip.none,
+          //               children: [
+          //
+          //                 ImageViewer(
+          //                     height: 32.hr(context),
+          //                     width: 26.wr(context),
+          //                     url: AppAssets.rankContainers),
+          //                 CustomText(
+          //                   text: "2",
+          //                   fontSize: 16.spr(context),
+          //                   fontFamily: AppFonts.helveticaNeueBold,
+          //                   fontColor: Color(0xff3B0A96),
+          //                 ).marginOnly(top: 5.hr(context)),
+          //                 Positioned(
+          //                   bottom: -45.hr(context),
+          //                   child: NotchedContainer(
+          //                       fontSize: 9.spr(context),
+          //                       width: 120.wr(context),
+          //                       height: 48.hr(context),
+          //                       text: AppStrings.submissionsRequired,
+          //                       opacity: controller.targetOpacitySmall),
+          //                 )
+          //               ],
+          //             ),
+          //           ),
+          //         ),
+          //
+          //       ],
+          //     ),
+          //   ),
+          // ),
+          SizedBox(
+            height: 27.hr(context),
+          ),
 
           // ImageViewer(url: AppAssets.crown),
         ],
@@ -409,10 +513,10 @@ class HomeScreen extends StatelessWidget {
         color: myColors.containerColor,
         borderRadius: BorderRadius.circular(10.rr(context)),
         border: Border.all(
-            color: myColors.black.setOpacity(0.2), width: 0.5.wr(context)),
+            color: myColors.black.setOpacity(0.1), width: 0.5.wr(context)),
         boxShadow: [
           BoxShadow(
-            color: myColors.grey.setOpacity(0.09),
+            color: myColors.grey.setOpacity(0.07),
             blurRadius: 3,
             spreadRadius: 2,
             // offset: Offset(0, -5),

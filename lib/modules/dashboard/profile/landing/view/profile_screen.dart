@@ -105,12 +105,39 @@ class ProfileScreen extends StatelessWidget {
                   shape: BoxShape.circle,
                   border: Border.all(color: myColors.primary, width: 2.sp)),
             ),
-            ImageViewer(
-              url: AppAssets.imgUserProfile,
-              fit: BoxFit.cover,
-              height: 65.sp,
-              width: 65.sp,
-              borderRadius: 72.r,
+            Stack(
+              clipBehavior: Clip.none,
+              fit: StackFit.loose,
+              children: [
+                ImageViewer(
+                  url: AppAssets.imgUserProfile,
+                  fit: BoxFit.cover,
+                  height: 65.sp,
+                  width: 65.sp,
+                  borderRadius: 72.r,
+                ),
+                Positioned(
+                  bottom: 2.h,
+                  right: -5.w,
+                  child: GestureDetector(
+
+                    onTap: () {
+                      Get.toNamed(AppRoutes.editProfile);
+                      // _showPopupMenu(context);
+                    },
+                    child: Container(
+                        width: 25.sp,
+                        height: 25.sp,
+                        padding: EdgeInsets.symmetric(horizontal: 5.sp),
+                        decoration: BoxDecoration(
+                            color: myColors.white,
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                                color: myColors.grey.setOpacity(0.5))),
+                        child: ImageViewer(url: AppAssets.iconEdit)),
+                  ),
+                )
+              ],
             ),
           ],
         ),
@@ -212,7 +239,7 @@ class ProfileScreen extends StatelessWidget {
           SettingTile(
             title: AppStrings.darkMode,
             iconPath: AppAssets.iconMoon,
-            iconColor: myColors.black,
+            iconColor: myColors.blackWhiteAlternate,
             iconBackgroundColor: myColors.grey.setOpacity(0.2),
             trailing: CustomSwitch(
               isSwitchedAlready: themeController.myTheme == ThemeMode.dark,
@@ -267,9 +294,11 @@ class ProfileScreen extends StatelessWidget {
             iconColor: myColors.primary,
             divider: false,
             onPressed: () async {
+              Get.offAllNamed(AppRoutes.login);
               // await Get.toNamed(AppRoutes.myCars);
               // dashboardController.selectedBottomBarIndex.refresh();
             },
+            trailing: Container(),
           ),
         ],
       ),

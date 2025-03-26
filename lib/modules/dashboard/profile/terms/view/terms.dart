@@ -21,7 +21,7 @@ class TermsView extends StatelessWidget {
     return BaseScaffold(
       bottom: true,
       top: true,
-      statusBarIconBrightness: Brightness.light,
+      // statusBarIconBrightness: Brightness.light,
       body: Column(
         children: [
          appbar(context),

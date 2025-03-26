@@ -64,7 +64,8 @@ class AppPages {
     GetPage(
       name: AppRoutes.dashboard,
       page: () => DashboardView(),
-      binding: DashboardBindings()
+      binding: DashboardBindings(),
+      transition: Transition.noTransition
     ),
 
     GetPage(

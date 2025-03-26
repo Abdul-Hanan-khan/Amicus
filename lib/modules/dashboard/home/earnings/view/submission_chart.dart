@@ -15,15 +15,19 @@ class SubmissionGraph extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
-      margin: EdgeInsets.only(left: 20.wr(context),right: 20.wr(context),top: 20.hr(context),bottom: 10.hr(context)),
+      margin: EdgeInsets.only(
+          left: 20.wr(context),
+          right: 20.wr(context),
+          top: 20.hr(context),
+          bottom: 10.hr(context)),
       padding: EdgeInsets.all(12.spr(context)),
       decoration: BoxDecoration(
         color: myColors.containerColor,
         borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(color: myColors.black.setOpacity(0.2), width: 0.5),
+        border: Border.all(color: myColors.black.setOpacity(0.1), width: 0.5),
         boxShadow: [
           BoxShadow(
-            color: myColors.grey.setOpacity(0.1),
+            color: myColors.grey.setOpacity(0.07),
             blurRadius: 3,
             spreadRadius: 3,
           ),
@@ -52,35 +56,38 @@ class SubmissionGraph extends StatelessWidget {
                 ],
               ),
               CustomContainer(
-                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 1.h),
                 decoration: BoxDecoration(
                   color: Colors.transparent,
                   // Background color (adjust as needed)
                   borderRadius: BorderRadius.circular(5.r),
                   border: Border.all(
-                      color: Colors.grey, width: 1), // Border with color
+                      color: Colors.grey.setOpacity(0.5),
+                      width: 1), // Border with color
                 ),
-                child: DropdownButton<String>(
-                  dropdownColor: myColors.blackNWhite,
-                  value: "This Week",
-                  items: ["This Week", "Last Week"].map((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Obx(() => CustomText(
-                            text: selectedValue.value,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.bold,
-                          )),
-                    );
-                  }).toList(),
-                  onChanged: (value) {
-                    selectedValue(value);
-                  },
-                  underline: SizedBox(),
-                  // Removes the default underline
-                  isDense: true,
-                  // Reduces height
-                  icon: Icon(Icons.keyboard_arrow_down), // Arrow icon
+                child: Obx(
+                  () => DropdownButton<String>(
+                    dropdownColor: myColors.blackNWhite,
+                    value: selectedValue.value,
+                    items: ["This Week", "Last Week"].map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: CustomText(
+                          text: value,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.bold,
+                        ).marginOnly(top: 2.hr(context)),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      selectedValue(value);
+                    },
+                    underline: SizedBox(),
+                    // Removes the default underline
+                    isDense: true,
+                    // Reduces height
+                    icon: Icon(Icons.keyboard_arrow_down), // Arrow icon
+                  ),
                 ),
               ),
             ],
@@ -110,13 +117,13 @@ class SubmissionGraph extends StatelessWidget {
                   leftTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 40.w, // Ensures space for horizontal labels
+                      // reservedSize: 40.w, // Ensures space for horizontal labels
                       getTitlesWidget: (value, meta) {
                         return CustomText(
                           text: formatToK(value),
                           fontSize: 11.sp,
                           textAlign:
-                              TextAlign.center, // Ensures horizontal alignment
+                              TextAlign.start, // Ensures horizontal alignment
                         );
                       },
                       interval: 2000, // Adjust interval for better readability
@@ -127,7 +134,7 @@ class SubmissionGraph extends StatelessWidget {
                   bottomTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 30.h, // Adds padding to the bottom text
+                      // reservedSize: 30.h, // Adds padding to the bottom text
                       getTitlesWidget: (value, meta) {
                         const days = [
                           "MON",
@@ -142,10 +149,13 @@ class SubmissionGraph extends StatelessWidget {
                           padding: EdgeInsets.only(top: 10.h, right: 10.w),
                           // Adds required padding
                           child: CustomText(
-                              text: days[value.toInt()], fontSize: 11.sp),
+                            text: days[value.toInt()],
+                            fontSize: 11.sp,
+                            textAlign: TextAlign.start,
+                          ),
                         );
                       },
-                      interval: 1,
+                      // interval: 1,
                     ),
                   ),
                 ),

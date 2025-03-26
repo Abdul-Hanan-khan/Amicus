@@ -87,7 +87,7 @@ class Notification extends StatelessWidget {
 
                       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                       decoration: BoxDecoration(
-                        color: myColors.containerColor,
+                        color: myColors.grey.setOpacity(0.1),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: CustomText(
@@ -107,12 +107,12 @@ class Notification extends StatelessWidget {
                     color: myColors.containerColor,
                     borderRadius: BorderRadius.circular(10.rr(context)),
                     border:
-                    Border.all(color: myColors.black.setOpacity(0.2), width: 0.5),
+                    Border.all(color: myColors.black.setOpacity(0.1), width: 0.5),
                     boxShadow: [
                       BoxShadow(
-                        color: myColors.grey.setOpacity(0.1),
-                        blurRadius: 1,
-                        spreadRadius: 1,
+                        color: myColors.grey.setOpacity(0.07),
+                        blurRadius: 2,
+                        spreadRadius: 2,
                         // offset: Offset(0, -5),
                       ),
                     ],
@@ -120,7 +120,7 @@ class Notification extends StatelessWidget {
                   child: Row(
                     children: [
                       Expanded(child: CustomText(text:  notification.message,maxLines: 5,)),
-                      ImageViewer(url:notification.status == "success"? AppAssets.iconSuccess:AppAssets.iconSuccessDanger)
+                      ImageViewer(url:notification.status == "success"? AppAssets.iconSuccess:AppAssets.iconCancel)
                     ],
                   ),
                 );

@@ -113,7 +113,8 @@ class BountyDetails extends StatelessWidget {
                     ),
                     CustomText(
                       text: AppStrings.front,
-                      fontFamily: AppFonts.helveticaNeueBold,
+                      fontFamily: AppFonts.helveticaNeue,
+                      fontWeight: FontWeight.bold,
                     ).marginSymmetric(vertical: 19.hr(context))
                   ],
                 ))
@@ -140,7 +141,8 @@ class BountyDetails extends StatelessWidget {
                     ),
                     CustomText(
                       text: AppStrings.back,
-                      fontFamily: AppFonts.helveticaNeueBold,
+                      fontFamily: AppFonts.helveticaNeue,
+                      fontWeight: FontWeight.bold,
                     ).marginSymmetric(vertical: 19.hr(context))
                   ],
                 ))
@@ -167,7 +169,8 @@ class BountyDetails extends StatelessWidget {
                     ),
                     CustomText(
                       text: AppStrings.side,
-                      fontFamily: AppFonts.helveticaNeueBold,
+                      fontFamily: AppFonts.helveticaNeue,
+                      fontWeight: FontWeight.bold,
                     ).marginSymmetric(vertical: 19.hr(context))
                   ],
                 ))
@@ -194,7 +197,8 @@ class BountyDetails extends StatelessWidget {
                     ),
                     CustomText(
                       text: AppStrings.context,
-                      fontFamily: AppFonts.helveticaNeueBold,
+                      fontFamily: AppFonts.helveticaNeue,
+                      fontWeight: FontWeight.bold,
                     ).marginSymmetric(vertical: 19.hr(context))
                   ],
                 ))
@@ -212,10 +216,10 @@ class BountyDetails extends StatelessWidget {
       decoration: BoxDecoration(
         color: myColors.containerColor,
         borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(color: myColors.black.setOpacity(0.2), width: 0.5),
+        border: Border.all(color: myColors.black.setOpacity(0.1), width: 0.5),
         boxShadow: [
           BoxShadow(
-            color: myColors.grey.setOpacity(0.1),
+            color: myColors.grey.setOpacity(0.07),
             blurRadius: 1,
             spreadRadius: 1,
           ),
@@ -245,10 +249,10 @@ class BountyDetails extends StatelessWidget {
       decoration: BoxDecoration(
         color: myColors.containerColor,
         borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(color: myColors.black.setOpacity(0.2), width: 0.5),
+        border: Border.all(color: myColors.black.setOpacity(0.1), width: 0.5),
         boxShadow: [
           BoxShadow(
-            color: myColors.grey.setOpacity(0.1),
+            color: myColors.grey.setOpacity(0.07),
             blurRadius: 1,
             spreadRadius: 1,
           ),
@@ -284,7 +288,7 @@ class BountyDetails extends StatelessWidget {
             child: CustomText(
           text: subtitle,
           fontFamily: AppFonts.helveticaNeue,
-          fontWeight: FontWeight.bold,
+          // fontWeight: FontWeight.bold,
           fontColor: myColors.grey,
         ))
       ],

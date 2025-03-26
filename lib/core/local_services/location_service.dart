@@ -1,6 +1,6 @@
 import 'package:amicus/core/local_services/message_service.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:permission_handler/permission_handler.dart';
+// import 'package:permission_handler/permission_handler.dart';
 class MyLocationService{
 
 
@@ -25,7 +25,7 @@ class MyLocationService{
 
     if (permission == LocationPermission.deniedForever) {
 
-      openAppSettings();
+      // openAppSettings();
       return Future.error('Location permissions are permanently denied.');
     }
 
@@ -34,9 +34,9 @@ class MyLocationService{
 
 
 
-  Future<void> openAppSettingsIfDenied() async {
-    if (await Permission.location.isPermanentlyDenied) {
-      await openAppSettings();  // Opens app settings
-    }
-  }
+  // Future<void> openAppSettingsIfDenied() async {
+  //   if (await Permission.location.isPermanentlyDenied) {
+  //     await openAppSettings();  // Opens app settings
+  //   }
+  // }
 }

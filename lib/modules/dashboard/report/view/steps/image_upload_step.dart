@@ -32,6 +32,7 @@ class ImageUploadStep extends StatelessWidget {
                       PictureUploadWidget(
                         height: 160.spr(context),
                         output: controller.frontImage,
+                        getFromCameraOnly: true,
                       ),
                       CustomText(
                         text: AppStrings.front,
@@ -49,6 +50,7 @@ class ImageUploadStep extends StatelessWidget {
                       PictureUploadWidget(
                         height: 160.spr(context),
                         output: controller.backImage,
+                        getFromCameraOnly: true,
                       ),
                       CustomText(
                         text: AppStrings.back,
@@ -67,6 +69,7 @@ class ImageUploadStep extends StatelessWidget {
                       PictureUploadWidget(
                         height: 160.spr(context),
                         output: controller.sideImage,
+                        getFromCameraOnly: true,
                       ),
                       CustomText(
                         text: AppStrings.side,
@@ -84,6 +87,7 @@ class ImageUploadStep extends StatelessWidget {
                       PictureUploadWidget(
                         height: 160.spr(context),
                         output: controller.contextImage,
+                        getFromCameraOnly: true,
                       ),
                       CustomText(
                         text: AppStrings.context,

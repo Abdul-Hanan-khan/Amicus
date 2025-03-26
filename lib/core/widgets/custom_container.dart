@@ -11,7 +11,7 @@ class CustomContainer extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final Widget? child;
   final AlignmentGeometry? alignment;
-  final Duration duration;
+  final Duration ?duration;
   final Curve curve;
   final bool ?animateColor;
 
@@ -26,7 +26,7 @@ class CustomContainer extends StatelessWidget {
     this.margin,
     this.child,
     this.alignment,
-    this.duration = const Duration(milliseconds: 500),
+    this.duration,
     this.curve = Curves.easeInOut,
     this.animateColor,
   }) : super(key: key);
@@ -34,7 +34,7 @@ class CustomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: animateColor == false  ? 50:500),
+      duration: duration?? Duration(milliseconds: animateColor == false  ? 50:500),
       // curve: curve,
       width: width,
       height: height,

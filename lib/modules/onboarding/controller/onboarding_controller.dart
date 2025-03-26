@@ -44,7 +44,7 @@ class OnboardingController extends GetxController {
       pageController.nextPage(
           duration: Duration(milliseconds: 300), curve: Curves.ease);
     } else {
-      Get.toNamed(AppRoutes.login);
+      Get.offAllNamed(AppRoutes.login);
       // Navigate to Home or Login Screen
     }
   }

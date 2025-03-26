@@ -116,10 +116,10 @@ class MyEarnings extends StatelessWidget {
             color: myColors.containerColor,
             borderRadius: BorderRadius.circular(10.r),
             border:
-                Border.all(color: myColors.black.setOpacity(0.2), width: 0.5),
+                Border.all(color: myColors.black.setOpacity(0.1), width: 0.5),
             boxShadow: [
               BoxShadow(
-                color: myColors.grey.setOpacity(0.1),
+                color: myColors.grey.setOpacity(0.07),
                 blurRadius: 3,
                 spreadRadius: 3,
                 // offset: Offset(0, -5),
@@ -147,7 +147,7 @@ class MyEarnings extends StatelessWidget {
                   fontSize: 42.sp,
                   fontColor: myColors.blackWhiteAlternate,
                   fontFamily: AppFonts.helveticaNeueBold,
-                ).marginOnly(right: 2.w),
+                ).marginOnly(right: 15.w),
                 CustomText(
                   text: AppStrings.earned,
                   fontColor: myColors.grey,

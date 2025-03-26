@@ -19,13 +19,13 @@ class ThemeController extends GetxController {
     bool isDark = prefs.getBool('darkThemeEnabled') ?? false;
 
     myTheme = isDark ? ThemeMode.dark : ThemeMode.light;
-   if(myTheme == ThemeMode.dark){
+   // if(myTheme == ThemeMode.dark){
      Get.changeThemeMode(myTheme);
-     updateUiStatusBar();
-     await Future.delayed(Duration(milliseconds: 1000),(){
+     // updateUiStatusBar();
+     await Future.delayed(Duration(milliseconds: 500),(){
        isThemeUpdated.refresh();
      });
-   }
+   // }
   }
 
   void toggleTheme(bool refresh) async {
@@ -34,12 +34,14 @@ class ThemeController extends GetxController {
     var prefs = await EncryptedSharedPreferences().getInstance();
     await prefs.setBool('darkThemeEnabled', myTheme == ThemeMode.dark);
 
+    updateUiStatusBar();
     Get.changeThemeMode(myTheme);
-    // isThemeUpdated.refresh();
-    // updateUiStatusBar();
+
   if(refresh) {
     await Future.delayed(Duration(milliseconds: 500),(){
       isThemeUpdated.refresh();
+
+      // isThemeUpdated.refresh();
     });
   }
   }
@@ -54,4 +56,5 @@ class ThemeController extends GetxController {
       ),
     );
   }
+
 }

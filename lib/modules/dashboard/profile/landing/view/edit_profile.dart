@@ -312,6 +312,8 @@ class EditProfileView extends StatelessWidget {
         obsecureText: obscure ?? false,
         hintText: hint ?? '',
         suffixIcon: suffix,
+        // style: TextStyle(color: myColors.blackNPrimary,fontSize: 15.sp,fontFamily: AppFonts.almarai ),
+        // labelStyle: TextStyle(color: myColors.blackNPrimary,fontSize: 12.sp,fontFamily: AppFonts.almarai ),
         label: label,
         prefixIcon: ImageViewer(
           url: iconPath,

@@ -80,6 +80,7 @@ class ChangePasswordScreen extends StatelessWidget {
             bgcolor: Colors.transparent,
 
             border: true,
+                borderColor: myColors.grey.setOpacity(0.5),
             onChange: (v) {
               // controller.validatePassword();
             },
@@ -117,6 +118,7 @@ class ChangePasswordScreen extends StatelessWidget {
             bgcolor: Colors.transparent,
 
             border: true,
+            borderColor: myColors.grey.setOpacity(0.5),
             onChange: (v) {
               controller.validatePassword();
             },
@@ -154,6 +156,7 @@ class ChangePasswordScreen extends StatelessWidget {
             bgcolor: Colors.transparent,
 
             border: true,
+                borderColor: myColors.grey.setOpacity(0.5),
             onChange: (v) {
               controller.validateConfirmPassword();
             },
